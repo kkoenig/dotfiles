@@ -6,6 +6,7 @@
     nixpkgs-fmt
     btop
     bashInteractive
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     # build tools
     bazelisk
@@ -21,6 +22,9 @@
     scc
     wget
   ];
+
+  fonts.fontconfig.enable = true;
+
   programs.home-manager.enable = true;
 
   programs.bat = {
@@ -60,14 +64,39 @@
     enableZshIntegration = false;
   };
 
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font = {
+        size = 22.0;
+        normal = {
+          style = "Medium";
+          family = "FiraCode Nerd Font";
+        };
+        bold = {
+          style = "Bold";
+          family = "FiraCode Nerd Font";
+        };
+        italic = {
+          style = "Italic";
+          family = "FiraCode Nerd Font";
+        };
+      };
+      program = "${pkgs.bashInteractive}/bin/bash";
+      args = [
+        "--login"
+      ];
+    };
+  };
+
   home.sessionVariables = {
     VISUAL = "nvim";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     MANROFFOPT = "-c";
+    SHELL = "${pkgs.bashInteractive}/bin/bash";
   };
 
   # todo
-  # -alacritty
   # -aria2
 
   # tap "homebrew/cask-fonts"
@@ -79,9 +108,7 @@
   # brew "nvm"
   # brew "pkg-config"
   # brew "tmux"
-  # cask "alacritty"
   # cask "dropbox"
-  # cask "font-fira-code-nerd-font"
   # cask "google-chrome"
   # cask "texifier"
 }
