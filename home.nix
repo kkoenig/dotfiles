@@ -35,7 +35,6 @@
 
   programs.bash = {
     enable = true;
-    enableCompletion = false; # work around an issue with this temporarily
     historyControl = [ "erasedups" ];
   };
 
@@ -54,6 +53,13 @@
     enableAliases = true;
   };
 
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = false;
+    enableZshIntegration = false;
+  };
+
   home.sessionVariables = {
     VISUAL = "nvim";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
@@ -65,7 +71,6 @@
   # -aria2
 
   # tap "homebrew/cask-fonts"
-  # brew "fzf"
   # brew "git"
   # brew "go"
   # brew "lastpass-cli"
