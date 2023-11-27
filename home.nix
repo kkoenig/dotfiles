@@ -5,7 +5,7 @@
   home.packages = with pkgs; [
     nixpkgs-fmt
     btop
-    bash
+    bashInteractive
 
     # cli utilities
     bat
@@ -19,12 +19,34 @@
   ];
   programs.home-manager.enable = true;
 
-  # tap "homebrew/bundle"
-  # tap "homebrew/cask"
+  programs.bat = {
+    enable = true;
+    config = {
+      map-syntax = [
+        "flake.lock:JSON"
+      ];
+      theme = "Dracula";
+    };
+  };
+
+  programs.bash = {
+    enable = true;
+    enableCompletion = false; # work around an issue with this temporarily
+    historyControl = [ "erasedups" ];
+  };
+
+  home.sessionVariables = {
+    VISUAL = "nvim";
+    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    MANROFFOPT = "-c";
+  };
+
+  # todo
+  # -alacritty
+  # -aria2
+
   # tap "homebrew/cask-fonts"
-  # tap "homebrew/core"
   # brew "exa"
-  # brew "fish"
   # brew "fzf"
   # brew "git"
   # brew "go"
