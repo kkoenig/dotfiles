@@ -13,7 +13,12 @@ nix run . -- switch --flake .
    ```bash
    mkdir -p $HOME/.config/nix/ && echo "experimental-features = flakes nix-command" >> $HOME/.config/nix/nix.conf
    ```
-3. Install home-manager (todo)
+3. Install [home-manager](https://nix-community.github.io/home-manager/index.html#sec-install-standalone)
+   ```bash
+   nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz home-manager
+   nix-channel --update
+   nix-shell '<home-manager>' -A install
+   ```
 4. Build and activate this configuration
    ```bash
    home-manager switch --flake github:kkoenig/dotfiles2
