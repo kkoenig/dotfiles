@@ -7,9 +7,13 @@
     btop
     bashInteractive
 
+    # build tools
+    bazelisk
+    ninja
+
     # cli utilities
     bat
-    bazelisk
+    eza
     curl
     fd
     jq
@@ -42,6 +46,14 @@
     };
   };
 
+  # todo: get working on osx
+  # programs.dircolors.enable = true;
+
+  programs.eza = {
+    enable = true;
+    enableAliases = true;
+  };
+
   home.sessionVariables = {
     VISUAL = "nvim";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
@@ -53,17 +65,14 @@
   # -aria2
 
   # tap "homebrew/cask-fonts"
-  # brew "exa"
   # brew "fzf"
   # brew "git"
   # brew "go"
   # brew "lastpass-cli"
   # brew "llvm"
   # brew "neovim"
-  # brew "ninja"
   # brew "nvm"
   # brew "pkg-config"
-  # brew "raylib"
   # brew "tmux"
   # cask "alacritty"
   # cask "dropbox"
