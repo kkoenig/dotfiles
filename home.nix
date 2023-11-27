@@ -35,6 +35,13 @@
     historyControl = [ "erasedups" ];
   };
 
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "dracula";
+    };
+  };
+
   home.sessionVariables = {
     VISUAL = "nvim";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
