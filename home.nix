@@ -3,9 +3,8 @@
   home.homeDirectory = "/Users/kkoenig";
   home.stateVersion = "22.11";
   home.packages = with pkgs; [
-    nixpkgs-fmt
-    btop
     bashInteractive
+    neovim
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     # build tools
@@ -14,12 +13,15 @@
 
     # cli utilities
     bat
-    eza
+    btop
     curl
+    eza
     fd
     jq
+    nixpkgs-fmt
     ripgrep
     scc
+    tree
     wget
   ];
 
@@ -63,13 +65,25 @@
     enableFishIntegration = false;
     enableZshIntegration = false;
     defaultOptions = [
-      "--margin 5,10%"
+      "--margin 4,8%"
+      "--height 100%"
     ];
     historyWidgetOptions = [
       "--height 100%"
       "--preview 'echo {}' --preview-window up:3:hidden:wrap"
       "--bind 'ctrl-w:toggle-preview'"
       "--bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'"
+      "--info=hidden"
+      "--no-scrollbar"
+    ];
+    fileWidgetCommand = "${pkgs.fd}/bin/fd --type f --strip-cwd-prefix";
+    fileWidgetOptions = [
+      "--preview '${pkgs.bat}/bin/bat --style=changes --color=always {}'"
+      "--bind 'ctrl-w:change-preview-window(down|hidden|)'"
+      "--preview-window border-sharp"
+      "--layout default"
+      "--info hidden"
+      "--no-scrollbar"
     ];
     colors = {
       fg = "#f8f8f2";
@@ -184,8 +198,8 @@
   };
 
   home.sessionVariables = {
-    VISUAL = "nvim";
-    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    VISUAL = "${pkgs.neovim}/bin/nvim";
+    MANPAGER = "sh -c 'col -bx | ${pkgs.bat}/bin/bat -l man -p'";
     MANROFFOPT = "-c";
     SHELL = "${pkgs.bashInteractive}/bin/bash";
   };
