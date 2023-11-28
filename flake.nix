@@ -21,6 +21,8 @@
           ./home/bash.nix
           ./home/fzf.nix
           ./home/git.nix
+          ./home/neovim.nix
+          ./home/starship.nix
         ];
       };
     };

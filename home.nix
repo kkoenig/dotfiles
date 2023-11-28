@@ -4,7 +4,6 @@
   home.stateVersion = "22.11";
   home.packages = with pkgs; [
     bashInteractive
-    neovim
     gh
     git
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
@@ -60,7 +59,6 @@
   };
 
   home.sessionVariables = {
-    VISUAL = "${pkgs.neovim}/bin/nvim";
     MANPAGER = "sh -c 'col -bx | ${pkgs.bat}/bin/bat -l man -p'";
     MANROFFOPT = "-c";
     SHELL = "${pkgs.bashInteractive}/bin/bash";
