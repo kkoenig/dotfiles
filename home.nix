@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   home.username = "kkoenig";
   home.homeDirectory = "/Users/kkoenig";
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
   home.packages = with pkgs; [
     bashInteractive
     gh
@@ -11,6 +11,8 @@
     # build tools
     bazelisk
     llvm
+    clang
+    gnumake
     git
     go
     ninja
