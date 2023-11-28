@@ -39,11 +39,6 @@
     };
   };
 
-  programs.bash = {
-    enable = true;
-    historyControl = [ "erasedups" ];
-  };
-
   programs.btop = {
     enable = true;
     settings = {
@@ -59,144 +54,6 @@
     enableAliases = true;
   };
 
-  programs.fzf = {
-    enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = false;
-    enableZshIntegration = false;
-    defaultOptions = [
-      "--margin 4,8%"
-      "--height 100%"
-    ];
-    historyWidgetOptions = [
-      "--height 100%"
-      "--preview 'echo {}' --preview-window up:3:hidden:wrap"
-      "--bind 'ctrl-w:toggle-preview'"
-      "--bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'"
-      "--info=hidden"
-      "--no-scrollbar"
-    ];
-    fileWidgetCommand = "${pkgs.fd}/bin/fd --type f --strip-cwd-prefix";
-    fileWidgetOptions = [
-      "--preview '${pkgs.bat}/bin/bat --style=changes --color=always {}'"
-      "--bind 'ctrl-w:change-preview-window(down|hidden|)'"
-      "--preview-window border-sharp"
-      "--layout default"
-      "--info hidden"
-      "--no-scrollbar"
-    ];
-    colors = {
-      fg = "#f8f8f2";
-      bg = "#282a36";
-      hl = "#bd93f9";
-      "fg+" = "#f8f8f2";
-      "bg+" = "#44475a";
-      "hl+" = "#bd93f9";
-      info = "#ffb86c";
-      prompt = "#50fa7b";
-      pointer = "#ff79c6";
-      marker = "#ff79c6";
-      spinner = "#ffb86c";
-      header = "#6272a4";
-    };
-  };
-
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font = {
-        size = 22.0;
-        normal = {
-          style = "Medium";
-          family = "FiraCode Nerd Font";
-        };
-        bold = {
-          style = "Bold";
-          family = "FiraCode Nerd Font";
-        };
-        italic = {
-          style = "Italic";
-          family = "FiraCode Nerd Font";
-        };
-      };
-      program = "${pkgs.bashInteractive}/bin/bash";
-      args = [
-        "--login"
-      ];
-
-      # Dracula theme for Alacritty
-      # https://draculatheme.com/alacritty
-      colors = {
-        primary = {
-          background = "#282a36";
-          foreground = "#f8f8f2";
-          bright_foreground = "#ffffff";
-        };
-        cursor = {
-          text = "CellBackground";
-          cursor = "CellForeground";
-        };
-        vi_mode_cursor = {
-          text = "CellBackground";
-          cursor = "CellForeground";
-        };
-
-        search = {
-          matches = {
-            foreground = "#44475a";
-            background = "#50fa7b";
-          };
-          focused_match = {
-            foreground = "#44475a";
-            background = "#ffb86c";
-          };
-        };
-        footer_bar = {
-          background = "#282a36";
-          foreground = "#f8f8f2";
-        };
-        hints = {
-          start = {
-            foreground = "#282a36";
-            background = "#f1fa8c";
-          };
-          end = {
-            foreground = "#f1fa8c";
-            background = "#282a36";
-          };
-        };
-        line_indicator = {
-          foreground = "None";
-          background = "None";
-        };
-        selection = {
-          text = "CellForeground";
-          background = "#44475a";
-        };
-        normal = {
-          black = "#21222c";
-          red = "#ff5555";
-          green = "#50fa7b";
-          yellow = "#f1fa8c";
-          blue = "#bd93f9";
-          magenta = "#ff79c6";
-          cyan = "#8be9fd";
-          white = "#f8f8f2";
-        };
-        bright = {
-          black = "#6272a4";
-          red = "#ff6e6e";
-          green = "#69ff94";
-          yellow = "#ffffa5";
-          blue = "#d6acff";
-          magenta = "#ff92df";
-          cyan = "#a4ffff";
-          white = "#ffffff";
-        };
-      };
-    };
-  };
-
   home.sessionVariables = {
     VISUAL = "${pkgs.neovim}/bin/nvim";
     MANPAGER = "sh -c 'col -bx | ${pkgs.bat}/bin/bat -l man -p'";
@@ -205,15 +62,11 @@
   };
 
   # todo
-  # -aria2
-
   # tap "homebrew/cask-fonts"
   # brew "git"
   # brew "go"
   # brew "lastpass-cli"
   # brew "llvm"
-  # brew "neovim"
-  # brew "nvm"
   # brew "pkg-config"
   # brew "tmux"
   # cask "dropbox"

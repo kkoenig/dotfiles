@@ -15,7 +15,12 @@
     homeConfigurations = {
       "kkoenig" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "aarch64-darwin"; };
-        modules = [ ./home.nix ];
+        modules = [
+          ./home.nix
+          ./home/alacritty.nix
+          ./home/bash.nix
+          ./home/fzf.nix
+        ];
       };
     };
   };
