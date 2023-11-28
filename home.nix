@@ -9,6 +9,9 @@
 
     # build tools
     bazelisk
+    clang
+    git
+    go
     ninja
 
     # cli utilities
@@ -62,12 +65,7 @@
   };
 
   # todo
-  # tap "homebrew/cask-fonts"
-  # brew "git"
-  # brew "go"
   # brew "lastpass-cli"
-  # brew "llvm"
-  # brew "pkg-config"
   # brew "tmux"
   # cask "dropbox"
   # cask "google-chrome"
