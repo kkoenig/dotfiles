@@ -5,7 +5,6 @@
   home.packages = with pkgs; [
     bashInteractive
     gh
-    git
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     # build tools
