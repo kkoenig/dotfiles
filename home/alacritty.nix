@@ -2,6 +2,11 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      env = {
+        # We set TERMINFO_DIRS in home manager session vars, but alacritty will run before this is set and set the incorrect default value
+        # https://github.com/alacritty/alacritty/blob/5adfc4fb00d1b523bd17bbd73515d30636de0a0e/alacritty_terminal/src/tty/mod.rs#L103
+        TERM = "alacritty";
+      };
       font = {
         size = 22.0;
         normal = {

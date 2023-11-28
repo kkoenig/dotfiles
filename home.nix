@@ -64,6 +64,7 @@
     MANPAGER = "sh -c 'col -bx | ${pkgs.bat}/bin/bat -l man -p'";
     MANROFFOPT = "-c";
     SHELL = "${pkgs.bashInteractive}/bin/bash";
+    TERMINFO_DIRS = "${pkgs.alacritty.terminfo.outPath}/share/terminfo";
   };
 
   # todo
