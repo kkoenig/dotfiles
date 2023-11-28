@@ -5,11 +5,13 @@
   home.packages = with pkgs; [
     bashInteractive
     neovim
+    gh
+    git
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     # build tools
     bazelisk
-    clang
+    llvm
     git
     go
     ninja

@@ -20,6 +20,7 @@
           ./home/alacritty.nix
           ./home/bash.nix
           ./home/fzf.nix
+          ./home/git.nix
         ];
       };
     };
