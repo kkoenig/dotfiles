@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   home.username = "kkoenig";
   home.homeDirectory = "/Users/kkoenig";
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
   home.packages = with pkgs; [
     bashInteractive
     gh

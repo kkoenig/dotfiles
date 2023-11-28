@@ -17,10 +17,12 @@
           family = "FiraCode Nerd Font";
         };
       };
-      program = "${pkgs.bashInteractive}/bin/bash";
-      args = [
-        "--login"
-      ];
+      shell = {
+        program = "${pkgs.bashInteractive}/bin/bash";
+        args = [
+          "--login"
+        ];
+      };
 
       # Dracula theme for Alacritty
       # https://draculatheme.com/alacritty
