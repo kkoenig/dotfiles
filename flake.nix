@@ -12,6 +12,7 @@
   outputs = { nixpkgs, home-manager, ... }: {
     packages.aarch64-darwin.default = home-manager.defaultPackage.aarch64-darwin;
     packages.x86_64-darwin.default = home-manager.defaultPackage.x86_64-darwin;
+    formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
     homeConfigurations = {
       "kkoenig" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "aarch64-darwin"; };
