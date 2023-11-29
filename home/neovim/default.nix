@@ -20,9 +20,6 @@
       cmp-nvim-lsp
       luasnip
 
-      # Format
-      lsp-format-nvim
-
       nvim-treesitter.withAllGrammars
     ];
     extraConfig = /* vimscript */ ''

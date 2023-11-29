@@ -22,15 +22,15 @@ vim.opt.backup = false
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
-local format = require('lsp-format')
-format.setup {
-    sync = true,
-}
-
-lsp.on_attach(function(client, bufnr)
-    format.on_attach(client, bufnr)
+lsp.on_attach(function(_, bufnr)
     -- see :help lsp-zero-keybindings
     lsp.default_keymaps({ buffer = bufnr })
+    lsp.buffer_autoformat()
 end)
 
-lsp.setup_servers({ 'lua_ls', 'clangd' })
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+lsp.setup_servers({
+    'clangd',
+})
+
+lsp.setup();
