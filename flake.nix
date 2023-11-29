@@ -22,7 +22,7 @@
           ./home/bash.nix
           ./home/fzf.nix
           ./home/git.nix
-          ./home/neovim.nix
+          ./home/neovim/default.nix
           ./home/starship.nix
           ./home/tmux.nix
         ];

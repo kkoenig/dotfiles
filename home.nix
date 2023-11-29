@@ -5,7 +5,9 @@
   home.packages = with pkgs; [
     bashInteractive
     gh
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+
+    lua-language-server
 
     # build tools
     bazelisk

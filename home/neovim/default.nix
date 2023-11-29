@@ -8,6 +8,22 @@
       dracula-nvim
       lualine-nvim
       fzf-lua
+
+      # Configure lsp
+      lsp-zero-nvim
+      nvim-lspconfig
+
+      # Autocompletion
+      nvim-cmp
+      cmp-buffer
+      cmp-path
+      cmp-nvim-lsp
+      luasnip
+
+      # Format
+      lsp-format-nvim
+
+      nvim-treesitter.withAllGrammars
     ];
     extraConfig = /* vimscript */ ''
       set expandtab       " use spaces instead of tabs in insert mode
@@ -23,16 +39,6 @@
 
       inoremap jj <ESC>
     '';
-    extraLuaConfig = /* lua */ ''
-      vim.o.termguicolors = true
-      vim.cmd('colorscheme dracula')
-
-      require('lualine').setup()
-      require("fzf-lua").setup({ 
-        "fzf-vim",
-        winopts = { border = "none" }
-      })
-      vim.keymap.set("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
-    '';
+    extraLuaConfig = builtins.readFile ./init.lua;
   };
 }
