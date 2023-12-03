@@ -20,6 +20,7 @@ in
     clang-tools
 
     clang
+    llvm
     libcxx
     libcxxabi
 
@@ -47,6 +48,11 @@ in
   fonts.fontconfig.enable = true;
 
   programs.home-manager.enable = true;
+
+  programs.man = {
+    enable = true;
+    generateCaches = true;
+  };
 
   programs.direnv = {
     enable = true;
