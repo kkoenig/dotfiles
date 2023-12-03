@@ -1,4 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  xcrun-disable-prompt = pkgs.writeScriptBin "xcrun" ''
+    exit 1
+  '';
+  scripts = [
+    xcrun-disable-prompt
+  ];
+in
+{
   home.username = "kkoenig";
   home.homeDirectory = "/Users/kkoenig";
   home.stateVersion = "24.05";
@@ -8,11 +17,14 @@
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     lua-language-server
+    clang-tools
+
+    clang
+    libcxx
+    libcxxabi
 
     # build tools
     bazelisk
-    llvm
-    clang
     gnumake
     git
     go
@@ -30,7 +42,7 @@
     scc
     tree
     wget
-  ];
+  ] ++ scripts;
 
   fonts.fontconfig.enable = true;
 
@@ -78,7 +90,6 @@
 
   # todo
   # brew "lastpass-cli"
-  # brew "tmux"
   # cask "dropbox"
   # cask "google-chrome"
   # cask "texifier"

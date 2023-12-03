@@ -29,8 +29,22 @@ lsp.on_attach(function(_, bufnr)
 end)
 
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-lsp.setup_servers({
-    'clangd',
-})
+
+require('lspconfig').clangd.setup(
+    {
+        cmd = {
+            "clangd",
+            "--clang-tidy",
+            "--header-insertion=iwyu",
+        },
+        filetypes = {
+            "c",
+            "cpp",
+            "proto",
+            "cc",
+        }
+    }
+)
+
 
 lsp.setup();
