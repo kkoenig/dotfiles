@@ -19,6 +19,11 @@ in
     lua-language-server
     clang-tools
 
+    # extra documentation (eg. man sprintf)
+    clang-manpages
+    man-pages
+    man-pages-posix
+
     clang
     llvm
     libcxx
