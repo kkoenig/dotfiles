@@ -102,5 +102,9 @@ in
     # Disable to avoid the following asan warnings
     # 'malloc: nano zone abandoned due to inability to reserve vm space."
     MallocNanoZone = 0;
+
+    # Set help=1 to see all options
+    ASAN_OPTIONS = "print_legend=false,log_path=stdout,color=always,dump_registers=false";
+    ASAN_SYMBOLIZER_PATH = "${pkgs.llvm}/bin/llvm-symbolizer";
   };
 }
