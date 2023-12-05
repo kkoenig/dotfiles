@@ -97,11 +97,10 @@ in
     MANROFFOPT = "-c";
     SHELL = "${pkgs.bashInteractive}/bin/bash";
     TERMINFO_DIRS = "${pkgs.alacritty.terminfo.outPath}/share/terminfo";
-  };
 
-  # todo
-  # brew "lastpass-cli"
-  # cask "dropbox"
-  # cask "google-chrome"
-  # cask "texifier"
+
+    # Disable to avoid the following asan warnings
+    # 'malloc: nano zone abandoned due to inability to reserve vm space."
+    MallocNanoZone = 0;
+  };
 }
