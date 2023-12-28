@@ -18,6 +18,7 @@ in
 
     lua-language-server
     clang-tools
+    gopls
 
     # extra documentation (eg. man sprintf)
     clang-manpages
