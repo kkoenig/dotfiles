@@ -21,5 +21,5 @@ nix run . -- switch --flake .
    ```
 4. Build and activate this configuration
    ```bash
-   home-manager switch --flake github:kkoenig/dotfiles2
+   home-manager switch --flake github:kkoenig/dotfiles
    ```
