@@ -29,7 +29,18 @@ lsp.on_attach(function(_, bufnr)
 end)
 
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-require('lspconfig').gopls.setup {}
+local lspconfig = require("lspconfig")
+lspconfig.gopls.setup({
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+        },
+    },
+})
 require('lspconfig').clangd.setup(
     {
         cmd = {
