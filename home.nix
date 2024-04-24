@@ -19,16 +19,14 @@ in
     lua-language-server
     clang-tools
     gopls
+    nodePackages.vscode-langservers-extracted
 
     # extra documentation (eg. man sprintf)
-    clang-manpages
-    man-pages
-    man-pages-posix
+    # clang-manpages man-pages man-pages-posix
 
     clang
     llvm
     libcxx
-    libcxxabi
 
     # build tools
     bazelisk
@@ -90,7 +88,6 @@ in
 
   programs.eza = {
     enable = true;
-    enableAliases = true;
   };
 
   home.sessionVariables = {

@@ -15,7 +15,6 @@ require 'nvim-treesitter.configs'.setup {
 }
 
 vim.g.mapleader = "\\"
-
 vim.opt.swapfile = false
 vim.opt.backup = false
 
@@ -28,8 +27,12 @@ lsp.on_attach(function(_, bufnr)
     lsp.buffer_autoformat()
 end)
 
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 local lspconfig = require("lspconfig")
+
+-- lua
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+
+-- golang
 lspconfig.gopls.setup({
     settings = {
         gopls = {
@@ -41,7 +44,9 @@ lspconfig.gopls.setup({
         },
     },
 })
-require('lspconfig').clangd.setup(
+
+-- c/c++
+lspconfig.clangd.setup(
     {
         cmd = {
             "clangd",
@@ -57,5 +62,7 @@ require('lspconfig').clangd.setup(
     }
 )
 
+-- html
+lspconfig.html.setup({})
 
 lsp.setup();
