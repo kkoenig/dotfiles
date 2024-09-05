@@ -19,11 +19,12 @@ in
     lua-language-server
     clang-tools
     gopls
+    biome
 
     # extra documentation (eg. man sprintf)
-    clang-manpages
-    man-pages
-    man-pages-posix
+    # clang-manpages
+    # man-pages
+    # man-pages-posix
 
     clang
     llvm

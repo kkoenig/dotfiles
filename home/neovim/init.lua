@@ -28,9 +28,11 @@ lsp.on_attach(function(_, bufnr)
     lsp.buffer_autoformat()
 end)
 
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-require('lspconfig').gopls.setup {}
-require('lspconfig').clangd.setup(
+local lspconfig = require('lspconfig')
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+lspconfig.gopls.setup {}
+lspconfig.biome.setup {}
+lspconfig.clangd.setup(
     {
         cmd = {
             "clangd",
