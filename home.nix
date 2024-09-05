@@ -29,7 +29,6 @@ in
     clang
     llvm
     libcxx
-    libcxxabi
 
     # build tools
     bazelisk
@@ -86,12 +85,8 @@ in
     };
   };
 
-  # todo: get working on osx
-  # programs.dircolors.enable = true;
-
   programs.eza = {
     enable = true;
-    enableAliases = true;
   };
 
   home.sessionVariables = {
@@ -101,7 +96,7 @@ in
     TERMINFO_DIRS = "${pkgs.alacritty.terminfo.outPath}/share/terminfo";
 
 
-    # Disable to avoid the following asan warnings
+    # Disable to avoid the following AddressSanitizer warnings
     # 'malloc: nano zone abandoned due to inability to reserve vm space."
     MallocNanoZone = 0;
 

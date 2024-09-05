@@ -8,7 +8,7 @@
         TERM = "alacritty";
       };
       font = {
-        size = 22.0;
+        size = 20.0;
         normal = {
           style = "Medium";
           family = "FiraCode Nerd Font";
