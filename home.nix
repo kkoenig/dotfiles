@@ -10,7 +10,7 @@ in
 {
   home.username = "kkoenig";
   home.homeDirectory = "/Users/kkoenig";
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
   home.packages = with pkgs; [
     bashInteractive
     gh
@@ -20,6 +20,7 @@ in
     clang-tools
     gopls
     biome
+    deno
 
     # extra documentation (eg. man sprintf)
     # clang-manpages
