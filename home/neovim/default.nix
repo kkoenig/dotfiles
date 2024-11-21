@@ -25,7 +25,7 @@
     extraConfig = /* vimscript */ ''
       set expandtab       " use spaces instead of tabs in insert mode
       set number          " show line numbers
-      set shiftwidth=4    " number of spaces to use for each autoindent
+      set shiftwidth=2    " number of spaces to use for each autoindent
       set ignorecase      " ignore case when matching
       set smartcase       " override ignorecase setting if search contains uppercase
       set softtabstop=-1  " use shiftwidth to insert spaces when <TAB> is pressed

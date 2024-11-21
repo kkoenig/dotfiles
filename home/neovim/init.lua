@@ -21,7 +21,9 @@ vim.opt.backup = false
 
 -- Reserve a space in the gutter
 -- This will avoid an annoying layout shift in the screen
-vim.opt.signcolumn = 'yes'
+-- When showing diagnostics, avoid shifting over the screen to make room for the indicator
+-- and instead replace the number in the number column
+vim.opt.signcolumn = 'number'
 
 -- Add cmp_nvim_lsp capabilities settings to lspconfig
 -- This should be executed before you configure any language server
@@ -52,15 +54,51 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-local lsp = require('lsp-zero')
-lsp.on_attach(function(_, bufnr)
-    -- see :help lsp-zero-keybindings
-    lsp.default_keymaps({ buffer = bufnr })
-    lsp.buffer_autoformat()
-end)
+local buffer_autoformat = function(bufnr)
+    local group = 'lsp_autoformat'
+    vim.api.nvim_create_augroup(group, { clear = false })
+    vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
+
+    vim.api.nvim_create_autocmd('BufWritePre', {
+        buffer = bufnr,
+        group = group,
+        desc = 'LSP format on save',
+        callback = function()
+            -- note: do not enable async formatting
+            vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+        end,
+    })
+end
+
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '✘',
+            [vim.diagnostic.severity.WARN] = '▲',
+            [vim.diagnostic.severity.HINT] = '⚑',
+            [vim.diagnostic.severity.INFO] = '»',
+        },
+    },
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(event)
+        local id = vim.tbl_get(event, 'data', 'client_id')
+        local client = id and vim.lsp.get_client_by_id(id)
+        if client == nil then
+            return
+        end
+
+        -- make sure there is at least one client with formatting capabilities
+        if client.supports_method('textDocument/formatting') then
+            buffer_autoformat(event.buf)
+        end
+    end
+})
+local lsp_zero = require('lsp-zero')
 
 local lspconfig = require('lspconfig')
-lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 lspconfig.gopls.setup {}
 
 vim.g.markdown_fenced_languages = {
@@ -85,7 +123,7 @@ lspconfig.clangd.setup(
 )
 
 
-lsp.setup();
+lsp_zero.setup();
 
 local cmp = require('cmp')
 
