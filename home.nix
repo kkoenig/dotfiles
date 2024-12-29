@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   xcrun-disable-prompt = pkgs.writeScriptBin "xcrun" ''
     exit 1
@@ -11,42 +11,42 @@ in
   home.username = "kkoenig";
   home.homeDirectory = "/Users/kkoenig";
   home.stateVersion = "24.11";
-  home.packages = with pkgs; [
-    bashInteractive
-    gh
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  home.packages = [
+    pkgs.bashInteractive
+    pkgs.gh
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     # lanaguage servers
-    zls # zig
-    zig
-    lua-language-server
-    gopls
-    biome
-    deno
+    pkgs.zls # zig
+    pkgs.zig
+    pkgs.lua-language-server
+    pkgs.gopls
+    pkgs.biome
+    pkgs.deno
 
     # extra documentation (eg. man sprintf)
     # man-pages
     # man-pages-posix
 
     # build tools
-    bazelisk
-    gnumake
-    git
-    go
-    ninja
+    pkgs.bazelisk
+    pkgs.gnumake
+    pkgs.git
+    pkgs.go
+    pkgs.ninja
 
     # cli utilities
-    bat
-    btop
-    curl
-    eza
-    fd
-    jq
-    nixpkgs-fmt
-    ripgrep
-    scc
-    tree
-    wget
+    pkgs.bat
+    pkgs.btop
+    pkgs.curl
+    pkgs.eza
+    pkgs.fd
+    pkgs.jq
+    pkgs.nixpkgs-fmt
+    pkgs.ripgrep
+    pkgs.scc
+    pkgs.tree
+    pkgs.wget
   ] ++ scripts;
 
   fonts.fontconfig.enable = true;
@@ -85,6 +85,11 @@ in
 
   programs.eza = {
     enable = true;
+  };
+
+  home.file."${config.xdg.configHome}" = {
+    source = ./users/kkoenig/config;
+    recursive = true;
   };
 
   home.sessionVariables = {

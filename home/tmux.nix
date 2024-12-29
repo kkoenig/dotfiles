@@ -9,11 +9,11 @@
       {
         plugin = tmuxPlugins.dracula;
         extraConfig = ''
-  set-option -g @dracula-plugins " "
-  set-option -g @dracula-show-powerline true
-  set-option -g @dracula-show-flags false
-  set -g @dracula-show-left-icon session
-'';
+          set-option -g @dracula-plugins " "
+          set-option -g @dracula-show-powerline true
+          set-option -g @dracula-show-flags false
+          set -g @dracula-show-left-icon session
+        '';
       }
     ];
   };
