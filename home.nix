@@ -16,20 +16,17 @@ in
     gh
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
 
+    # lanaguage servers
+    zls # zig
+    zig
     lua-language-server
-    clang-tools
     gopls
     biome
     deno
 
     # extra documentation (eg. man sprintf)
-    # clang-manpages
     # man-pages
     # man-pages-posix
-
-    clang
-    llvm
-    libcxx
 
     # build tools
     bazelisk

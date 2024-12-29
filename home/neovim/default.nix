@@ -7,6 +7,7 @@
     plugins = with pkgs.vimPlugins; [
       dracula-nvim
       lualine-nvim
+      catppuccin-nvim
       fzf-lua
 
       # Configure lsp
