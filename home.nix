@@ -14,7 +14,9 @@ in
   home.packages = [
     pkgs.bashInteractive
     pkgs.gh
+    # pkgs.fira-code
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    pkgs.jetbrains-mono
 
     # lanaguage servers
     pkgs.zls # zig
@@ -87,9 +89,12 @@ in
     enable = true;
   };
 
-  home.file."${config.xdg.configHome}" = {
-    source = ./users/kkoenig/config;
-    recursive = true;
+  home.file = {
+    "${config.xdg.configHome}/ghostty/config" = {
+      text = (builtins.readFile ./users/kkoenig/config/ghostty/config) + ''
+        command = ${pkgs.bashInteractive}/bin/bash --login
+      '';
+    };
   };
 
   home.sessionVariables = {
