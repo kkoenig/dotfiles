@@ -20,18 +20,11 @@
         pkgs = import nixpkgs { system = "aarch64-darwin"; };
         modules = [
           ./home.nix
-          ./home/alacritty.nix
           ./home/bash.nix
           ./home/fzf.nix
           ./home/git.nix
           ./home/neovim/default.nix
-          ./home/starship.nix
           ./home/tmux.nix
-          # {
-          #   home.packages = [
-          #     ghostty.packages.aarch64-darwin.default
-          #   ];
-          # }
         ];
       };
     };

@@ -14,9 +14,7 @@ in
   home.packages = [
     pkgs.bashInteractive
     pkgs.gh
-    # pkgs.fira-code
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
-    pkgs.jetbrains-mono
 
     # lanaguage servers
     pkgs.zls # zig
@@ -101,8 +99,6 @@ in
     MANPAGER = "sh -c 'col -bx | ${pkgs.bat}/bin/bat -l man -p'";
     MANROFFOPT = "-c";
     SHELL = "${pkgs.bashInteractive}/bin/bash";
-    TERMINFO_DIRS = "${pkgs.alacritty.terminfo.outPath}/share/terminfo";
-
 
     # Disable to avoid the following AddressSanitizer warnings
     # 'malloc: nano zone abandoned due to inability to reserve vm space."

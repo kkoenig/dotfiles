@@ -2,9 +2,9 @@
   programs.tmux = {
     enable = true;
     prefix = "C-a";
-    extraConfig =
-      "set-option -g terminal-overrides \",alacritty:RGB\""
-    ;
+    #extraConfig =
+    # "set-option -g terminal-overrides \",alacritty:RGB\""
+    #;
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.dracula;

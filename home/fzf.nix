@@ -26,18 +26,19 @@
       "--no-scrollbar"
     ];
     colors = {
-      fg = "#f8f8f2";
-      bg = "#282a36";
-      hl = "#bd93f9";
-      "fg+" = "#f8f8f2";
-      "bg+" = "#44475a";
-      "hl+" = "#bd93f9";
-      info = "#ffb86c";
-      prompt = "#50fa7b";
-      pointer = "#ff79c6";
-      marker = "#ff79c6";
-      spinner = "#ffb86c";
-      header = "#6272a4";
+      fg = "#cdd6f4";
+      bg = "#1e1e2e";
+      hl = "#f38ba8";
+      "fg+" = "#cdd6f4";
+      "bg+" = "#313244";
+      "hl+" = "#f38ba8";
+      info = "#cba6f7";
+      prompt = "#cba6f7";
+      pointer = "#f5e0dc";
+      marker = "#b4befe";
+      spinner = "#f5e0dc";
+      header = "#f38ba8";
+      selected-bg = "#45475a";
     };
   };
 }
