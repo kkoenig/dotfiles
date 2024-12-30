@@ -8,6 +8,8 @@ let
   ];
 in
 {
+  catppuccin.enable = true;
+
   home.username = "kkoenig";
   home.homeDirectory = "/Users/kkoenig";
   home.stateVersion = "24.11";
@@ -72,15 +74,11 @@ in
       map-syntax = [
         "flake.lock:JSON"
       ];
-      theme = "Dracula";
     };
   };
 
   programs.btop = {
     enable = true;
-    settings = {
-      color_theme = "dracula";
-    };
   };
 
   programs.eza = {
